@@ -546,12 +546,6 @@ button.button.nav__toggle {
     .nav__list {margin-left: auto;}
 }
 
-@media (max-width: 40rem) {
-  #menu {
-    display: none;
-  }
-}
-
 
 
 
