@@ -1,3 +1,19 @@
+/* #CONTENTS ==================================== *\
+ *  #LOCAL WEB FONTS
+ *  #VARIABLES
+ *  #BASE
+ *  #ACCESSIBILITY
+ *  #UTILITIES
+ *  #LAYOUT
+ *  #COMPONENTS
+ *  #THEMES 
+\* ============================================== */
+
+
+/* #LOCAL WEB FONTS ============================= *\
+ * @font-face rules for loading necessary fonts.
+\* ============================================== */
+
 /* cabin-regular - latin */
 @font-face {
   font-family: 'Cabin', Trebuchet, 'Trebuchet MS', Arial, sans-serif;
@@ -58,7 +74,16 @@
   font-display: swap;
 }
 
+
+
+
+
+/* #VARIABLES ========================================= *\
+ * Reusable/modifiable css custom properties.
+\* ==================================================== */
+
 :root {
+  /* #COLORS */
   --color__dark: #000;
   --color__light: #fff;
   --color__light-grey: #F0EEEB;
@@ -68,15 +93,23 @@
   --color__focus-light: rgba(255,255,255,.8);
   --color__focus-dark: rgba(0,0,0,.8);
 
+  /* #FONT STACK */
   --font-stack: 'Cabin', Trebuchet, 'Trebuchet MS', Arial, sans-serif;
 
+  /* #FOCUS */
   --focus__ring: 0 0 0 5px;
 
+  /* #GUTTERS */
+  --gutter: 1.25rem;
+
+  /* #LEADING */
   --leading__body: 1.618;
   --leading__headings: 1.2;
 
+  /* #MARGINS */
   --m__center: auto;
 
+  /* #TYPE SCALE */
   --text__base: 16px;
 
   --text__preset-1: 4.209rem;
@@ -87,6 +120,7 @@
   --text__preset-6: 1rem;
   --text__preset-7: .875rem;
 
+  /* #WIDTHS */
   --width__wide: 75rem;
 }
 
@@ -109,6 +143,14 @@
     --text__preset-5: 1.2rem;
   }
 }
+
+
+
+
+
+/* #BASE ======================================= *\
+ * Default settings.
+\* ============================================= */
 
 *, *::after, *::before {box-sizing: border-box;}
 
@@ -169,10 +211,6 @@ img {
 
 input {font: inherit;}
 
-ol, ul {
-  
-}
-
 ol[class], ul[class] {
   list-style: none;
   padding: 0;
@@ -209,7 +247,10 @@ svg {fill: currentColor;}
 
 
 
-/* #ACCESSIBILITY */
+/* #ACCESSIBILITY =========================== *\
+ * Focus styles, skip links, and screen 
+ * reader text.
+\* ========================================== */
 *:focus {
   outline-style: solid;
   outline-color: transparent;
@@ -234,7 +275,9 @@ svg {fill: currentColor;}
 
 
 
-/* UTILITIES */
+/* UTILITIES =============================================== *\
+ * Reusable utility classes.
+\* ========================================================= */
 .container__wide {
   max-width: var(--width__wide);
   margin: var(--m__center);
@@ -259,9 +302,17 @@ svg {fill: currentColor;}
 
 
 
-/* #COMPONENTS */
+/* #COMPONENTS ======================================= *\
+ *  #ALERTS
+ *  #BUTTONS
+ *  #CLIENTS
+ *  #HERO
+ *  #INPUT FIELDS
+ *  #SECURITY
+ *  #TEXT-EDITOR
+\* =================================================== */
 
-/* ALERTS */
+/* #ALERTS ------------------------------------------- */
 .alert {
   font-size: var(--text__preset-6);
   font-weight: bold;
@@ -281,7 +332,11 @@ svg {fill: currentColor;}
         box-shadow: var(--focus__ring) var(--color__focus-light);
       }
 
-/* BUTTON */
+
+
+
+
+/* BUTTONS ------------------------------------------ */
 a.button {text-decoration: none;}
 
 button.button {
@@ -328,7 +383,7 @@ a.button, button.button {
 
 
 
-/* #CLIENTS */
+/* #CLIENTS ------------------------------------------------- */
 .clients {
   max-width: var(--width__wide);
   margin: var(--m__center);
@@ -341,21 +396,26 @@ a.button, button.button {
     justify-content: space-between;
     align-items: center;
     gap: 1.25rem;
+    margin: 0;
   }
-    .clients a {display: inline-block;}
-
-    .list__clients img {
-      max-height: 30px;
-      width: auto;
+    .list__clients a {
+      --link-color: var(--color__grey-med);
+      --link-hover: var(--color__grey-dark);
+      display: inline-block;
+      color: var(--link-color);
+      transition: 220ms all ease-in-out;
     }
+      .list__clients a:hover, .list__clients a:focus {
+        color: var(--link-hover);
+      }
 
-@media (max-width: 64rem) {
-  .clients {padding: 2rem;}
-    .list__clients {justify-content: center;}
+@media (max-width: 75rem) {
+  .clients {padding: 2rem 2rem 0 2rem;}
+  .list__clients {justify-content: center;}
 }
 
 
-/* #HERO */
+/* #HERO --------------------------------------------------- */
 .hero .container__wide {
   display: grid;
   grid-auto-rows: min-content;
@@ -413,7 +473,98 @@ a.button, button.button {
 
 
 
-/* #SECURITY */
+
+
+/* INPUT FIELDS ---------------------------------------------- */
+.input {
+  background-color: var(--color__light);
+  border: 2px solid var(--color__cool-grey);
+  border-radius: 5px;
+  font-size: var(--text__preset-6);
+  padding: .25em .5em;
+}
+  .input:not(textarea) {
+    line-height: 1;
+    min-height: 2.25rem;
+  }
+
+  .input:focus {
+    box-shadow: var(--focus__ring) var(--color__focus-dark);
+  }
+
+
+
+
+
+/* NAVBAR ------------------------------------------------- */
+.navbar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: var(--text__preset-5);
+  padding: 1.25rem 0;
+  flex-wrap: wrap;
+}
+  .navbar a {
+    transition: all 220ms ease-in-out;
+    text-decoration-thickness: 2px;
+  }
+
+  .nav__brand {
+    font-weight: bold;
+    margin-right: auto;
+    text-decoration: none;
+  }
+    .nav__brand:hover, .nav__brand:focus {
+      text-decoration: underline;
+    }
+
+  .nav__brand, .nav__list a, .nav__group a:not(.button) {
+    color: var(--color__dark);
+  }
+
+  .nav__brand, .nav__list a, .nav__group a:not(.button) {
+    display: block;
+    padding: 1rem 0;
+  }
+
+  
+
+/* DESKTOP */
+@media (min-width: 40rem) {
+  .button.nav__toggle {display: none;}
+  .navbar, .nav__wrapper, .nav__list, .nav__group {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: var(--gutter);
+  }
+    .nav__wrapper {flex-basis: 70%;}
+    .nav__group {align-items: center;}
+}
+
+@media (max-width: 64rem) {
+  .navbar {padding: 1.25rem 2rem;}
+    .nav__wrapper {flex-basis: auto;}
+}
+
+@media (max-width: 40rem) {
+  .nav__brand {flex-basis: 80%;}
+
+  .button.nav__toggle {
+    min-width: auto;
+    padding: 1rem;
+  }
+
+  .nav__wrapper {flex-basis: 100%;}
+  .nav__list {margin: 0;}
+}
+
+
+
+
+
+/* #SECURITY -------------------------------------------------- */
 .security {position: relative;}
   .security__body {
     position: absolute;
@@ -447,7 +598,7 @@ a.button, button.button {
 
 
 
-/* #TEXT-EDITOR */
+/* #TEXT-EDITOR ------------------------------------------- */
 .text-editor {
   display: grid;
   grid-auto-rows: min-content;
@@ -478,79 +629,12 @@ a.button, button.button {
 }
 
 
-/* INPUT FIELDS */
-.input {
-  background-color: var(--color__light);
-  border: 2px solid var(--color__cool-grey);
-  border-radius: 5px;
-  font-size: var(--text__preset-6);
-  padding: .25em .5em;
-}
-  .input:not(textarea) {
-    line-height: 1;
-    min-height: 2.25rem;
-  }
-
-  .input:focus {
-    box-shadow: var(--focus__ring) var(--color__focus-dark);
-  }
 
 
 
-/* NAVBAR */
-.navbar, .nav__list, .nav__group {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  gap: 1.25rem;
-}
-
-.navbar {
-  flex-wrap: wrap;
-  align-items: center;
-  color: var(--color__dark);
-  font-size: var(--text__preset-5);
-  padding: 1.25em 0;
-}
-  .navbar a {text-decoration: none;}
-
-  .nav__list a {
-    display: block;
-    padding: 1rem 0;
-    transition: all 220ms ease-in-out;
-  }
-    .nav__list a:hover {
-      background-color: var(--color__dark);
-      border-radius: 5px;
-      color: var(--color__cool-grey);
-    }
-
-  .logo {font-weight: bold;}
-
-  .nav__group {align-items: center;}
-
-button.button.nav__toggle {
-  padding: .5rem;
-  min-width: auto;
-}
-  button.button.nav__toggle:focus {
-    box-shadow: var(--focus__ring) var(--color__focus-dark);
-  }
-
-@media (min-width: 40rem) {
-  .nav__toggle {display: none;}
-}
-
-@media (max-width: 64rem) {
-  .navbar {padding: 1.25rem 2rem;}
-    .nav__list {margin-left: auto;}
-}
-
-
-
-
-
-/* #LAYOUT */
+/* #LAYOUT ========================================= *\
+ *  #FOOTER
+\* ================================================= */
 
 /* #FOOTER */
 footer {padding: 4rem 2rem;}
@@ -578,8 +662,13 @@ footer {padding: 4rem 2rem;}
 
 
 
-/* #THEMES */
+/* #THEMES ======================================= *\
+ *  #DARK
+ *  #LIGHT
+ *  #SECONDARY
+\* =============================================== */
 
+/* #DARK ----------------------------------------- */
 .theme__dark {
   --link__color: var(--color__cool-grey);
   --focus__color: var(--color__focus-light);
@@ -595,18 +684,24 @@ footer {padding: 4rem 2rem;}
 
 
 
-.theme__secondary {
-  --link__color: var(--color__grey-med);
-  background-color: var(--color__light-grey);
-  color: var(--color__grey-med);
-}
-  .theme__secondary h1, .theme__secondary h2 {color: var(--color__grey-dark);}
 
 
-
+/* #LIGHT ---------------------------------------- */
 .theme__light {
   color: var(--color__grey-med);
 }
   .theme__light h2 {color: var(--color__grey-dark);}
 
   .theme__light a, .theme__light a:hover, .theme__light a:focus {color: var(--color__grey-med);}
+
+
+
+
+
+/* #SECONDARY ------------------------------------ */  
+.theme__secondary {
+  --link__color: var(--color__grey-med);
+  background-color: var(--color__light-grey);
+  color: var(--color__grey-med);
+}
+  .theme__secondary h1, .theme__secondary h2 {color: var(--color__grey-dark);}

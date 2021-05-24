@@ -1,6 +1,6 @@
 //RESPONSIVE NAVIGATION MENU
 const toggleMenu = document.querySelector( '.nav__toggle' );
-const menu = document.querySelector( '.nav__list' );
+const menu = document.querySelector( '#menu' );
 
 toggleMenu.addEventListener( 'click', function() {
   const open = JSON.parse(toggleMenu.getAttribute('aria-expanded'));
