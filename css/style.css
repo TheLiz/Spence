@@ -192,13 +192,13 @@ svg {fill: currentColor;}
   padding: 1rem;
   position: absolute;
   transform: translateY(-100%);
-  transition: transform .3s
+  transition: transform .3s;
  }
-  .link__skip:focus {transform: translateY(0)}
+  .link__skip:focus {transform: translateY(0);}
 
 .sr__only {
   clip: rect(1px,1px,1px,1px);
-  position: absolute!important
+  position: absolute !important;
 }
 
 
